@@ -1,35 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import { DECREMENT, INCREMENT } from './store/actions/types';
+import { increment, decrement } from './store/actions/countAction';
 
-function App(props) {
-  console.log(props)
-  const handleInc = (evt) => {
-    props.dispatch({
-      type: INCREMENT 
-    })
-  }
+// mapeia meu estado para dentro das props do componentes
+const mapState = (state) => ({
+  count: state.count.count
+});
 
-  const handleDec = (evt) => {
-    props.dispatch({
-      type: DECREMENT 
-    })
-  }
-
+function App({ count, increment, decrement }) {
   return (
     <div className="App">
-      <button onClick={handleInc}>Increment</button>
-      <button onClick={handleDec}>Decrement</button>
-      <p>{props.count}</p>
+      <button onClick={() => {
+        increment(count)
+      }}>Increment</button>
+      <button onClick={() => {
+        decrement(count)
+      }}>Decrement</button>
+      <p>{count}</p>
     </div>
   );
 }
-
-const mapStateProps = (state) => {
-  return {
-    count: state.count.count
-  }
-}
  
-export default connect(mapStateProps)(App);
+export default connect(mapState, { increment, decrement })(App);

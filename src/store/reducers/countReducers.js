@@ -1,23 +1,21 @@
-import { INCREMENT, DECREMENT } from "../actions/types";
-
 const initialState = {
   count: 0,
 };
 
 // eslint-disable-next-line
-export default function(state = initialState, action) {
+export const countReducers = (state = initialState, action) => {
   switch (action.type) {
-    case INCREMENT:
+    case 'INCREMENT':
       return {
         ...state,
-        count: state.count + 1
+        count: state.count + 1,
       }
-    case DECREMENT: 
+    case 'DECREMENT': 
       return {
         ...state,
-        count: state.count - 1
+        count: state.count - 1,
       }
     default: 
-      return state
+      return state;
   }
-}
+};

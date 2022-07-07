@@ -1,5 +1,6 @@
 const initialState = {
   count: 0,
+
 };
 
 // eslint-disable-next-line
@@ -14,6 +15,16 @@ export const countReducers = (state = initialState, action) => {
       return {
         ...state,
         count: state.count - 1,
+      }
+    case 'MULTIPLY':
+      return {
+        ...state,
+        count: state.count * action.payload,
+      }
+      case 'DIVIDE':
+      return {
+        ...state,
+        count: action.payload / state.count,
       }
     default: 
       return state;

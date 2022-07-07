@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import { increment, decrement } from './store/actions/countAction';
+import { increment, decrement, multiply, divide } from './store/actions/countAction';
 
 // mapeia meu estado para dentro das props do componentes
 const mapState = (state) => ({
-  count: state.count.count
+  count: state.count.count,
 });
 
-function App({ count, increment, decrement }) {
+const App = ({ count, increment, decrement, multiply, divide }) => {
+  const [arg, setArg] = useState(0);
+
+  const setArgByInput = (e) => {
+    setArg(e.target.value);
+  }
+
   return (
     <div className="App">
+      <input type="number" value={arg} onChange={setArgByInput}/>
+      <p>MULTIPLY: {count.count}</p>
+      <p>DIVIDE: {count.count}</p>
+      <button onClick={() => {
+        multiply(arg)
+      }}>multiply</button>
+      <button onClick={() => {
+        divide(arg)
+      }}>divide</button>
       <button onClick={() => {
         increment(count)
       }}>Increment</button>
@@ -22,4 +37,4 @@ function App({ count, increment, decrement }) {
   );
 }
  
-export default connect(mapState, { increment, decrement })(App);
+export default connect(mapState, { increment, decrement, multiply, divide })(App);

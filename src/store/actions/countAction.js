@@ -19,3 +19,25 @@ export const decrement = (state) => async (dispatch) => {
     console.log(err);
   }
 };
+
+export const multiply = (arg) => async (dispatch) => {
+  try {
+    dispatch({
+      type: 'MULTIPLY',
+      payload: arg,
+    })
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export const divide = (arg) => async (dispatch) => {
+  try {
+    dispatch({
+      type: 'DIVIDE',
+      payload: arg,
+    })
+  } catch (err) {
+    console.log(err);
+  }
+}

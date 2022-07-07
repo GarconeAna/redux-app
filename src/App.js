@@ -38,3 +38,6 @@ const App = ({ count, increment, decrement, multiply, divide }) => {
 }
  
 export default connect(mapState, { increment, decrement, multiply, divide })(App);
+
+
+// teste

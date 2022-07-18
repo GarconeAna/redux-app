@@ -4,3 +4,6 @@ import { countReducers } from "./countReducers";
 export default combineReducers({
   count: countReducers,
 });
+
+//teste
+//teste2

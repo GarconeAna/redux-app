@@ -7,3 +7,4 @@ export default combineReducers({
 
 //teste
 //teste2
+//teste do teste
